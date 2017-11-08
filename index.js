@@ -160,14 +160,14 @@ app.get('/json', (req, res, next) => {
   });
 });
 
-app.post('/json', (req, res, next) => {
+app.get('/:word', (req, res, next) => {
   fs.readFile('output.json', (err, d) => {
     if(err){
       next(err);
     }
     let data = JSON.parse(d);
     let current = data;
-    let arr = req.body.term.split('');
+    let arr = req.params.word.replace("%20", " ").split('');
     let result = [];
 
     arr.forEach((a) => {
