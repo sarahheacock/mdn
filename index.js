@@ -147,20 +147,20 @@ app.use((req, response, next) => {
 //     res.json({done: true});
 //   });
 // });
-app.get('/json', (req, res, next) => {
+app.get('/', (req, res, next) => {
   fs.readFile('output.json', (err, data) => {
     res.json(JSON.parse(data));
   });
 });
 
-app.get('/:word', (req, res, next) => {
+app.post('/', (req, res, next) => {
   fs.readFile('output.json', (err, d) => {
     if(err){
       next(err);
     }
     let data = JSON.parse(d);
     let current = data;
-    let arr = req.params.word.split('');
+    let arr = req.body.term.split('');
     let result = [];
 
     arr.forEach((a) => {
