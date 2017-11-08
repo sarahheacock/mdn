@@ -185,7 +185,7 @@ app.get('/:word', (req, res, next) => {
 
     while(result.length < 5 && keys.length > 0){
       if(keys.includes("*")){
-        result = result.concat(current["*"]);
+        result = result.concat(current["*"].slice(0, 3));
         if(keys.length > 1){
           current = current[keys[1]];
         }
