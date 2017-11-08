@@ -6,7 +6,7 @@ const cheerio = require('cheerio');
 const app = express();
 
 // Add headers
-app.use((req, response, next) => { 
+app.use((req, response, next) => {
   response.setHeader("Access-Control-Allow-Origin", "*");
   response.setHeader("Access-Control-Allow-Credentials", "true");
   response.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
@@ -149,7 +149,7 @@ app.use((req, response, next) => {
 // });
 app.get('/json', (req, res, next) => {
   fs.readFile('output.json', (err, data) => {
-    res.send(data);
+    res.json(data);
   });
 });
 
