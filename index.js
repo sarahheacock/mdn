@@ -2,8 +2,11 @@ const express = require('express');
 const fs = require('fs');
 const request = require('request');
 const cheerio = require('cheerio');
+const bodyParser = require('body-parser');
 
 const app = express();
+
+app.use(bodyParser.json());
 
 // Add headers
 app.use((req, response, next) => {
@@ -147,13 +150,13 @@ app.use((req, response, next) => {
 //     res.json({done: true});
 //   });
 // });
-app.get('/', (req, res, next) => {
+app.get('/json', (req, res, next) => {
   fs.readFile('output.json', (err, data) => {
     res.json(JSON.parse(data));
   });
 });
 
-app.post('/', (req, res, next) => {
+app.post('/json', (req, res, next) => {
   fs.readFile('output.json', (err, d) => {
     if(err){
       next(err);
