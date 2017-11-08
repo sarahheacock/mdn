@@ -149,7 +149,7 @@ app.use((req, response, next) => {
 // });
 app.get('/json', (req, res, next) => {
   fs.readFile('output.json', (err, data) => {
-    res.json(data);
+    res.json(JSON.parse(data));
   });
 });
 
