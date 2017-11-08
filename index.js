@@ -154,7 +154,7 @@ app.use((req, response, next) => {
 //     res.json({done: true});
 //   });
 // });
-app.get('/json', (req, res, next) => {
+app.get('/word', (req, res, next) => {
   fs.readFile('output.json', (err, data) => {
     res.json(JSON.parse(data));
   });
