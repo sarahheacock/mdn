@@ -189,7 +189,7 @@ app.get('/:word', (req, res, next) => {
     });
 
     if(current.hasOwnProperty("*")){
-      let result = current["*"].map((name) => {
+      let result = current["*"].slice(0, 5).map((name) => {
         return Object.assign(data["map"][name], {name: name});
       });
       res.json(result);
@@ -197,28 +197,6 @@ app.get('/:word', (req, res, next) => {
     else {
       res.json([]);
     }
-
-    //result = current["*"].slice(0, 3);
-
-    // let keys = Object.keys(current);
-    //
-    // while(result.length < 5 && keys.length > 0){
-    //   if(keys.includes("*")){
-    //     result = result.concat(current["*"].slice(0, 3));
-    //     if(keys.length > 1){
-    //       current = current[keys[1]];
-    //     }
-    //     else {
-    //       break;
-    //     }
-    //   }
-    //   else {
-    //     current = current[keys[0]];
-    //   }
-    //
-    //   keys = Object.keys(current);
-    // }
-    // res.json(result);
   });
 });
 
