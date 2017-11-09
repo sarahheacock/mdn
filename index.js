@@ -189,9 +189,12 @@ app.get('/:word', (req, res, next) => {
     });
 
     if(current.hasOwnProperty("*")){
-      let result = current["*"].slice(0, 5).map((name) => {
-        return Object.assign(data["map"][name], {name: name});
+      let result = current["*"].slice(0, 5)
+
+      result.forEach((name, i) => {
+        result[i] = Object.assign(data["map"][name], {name: name});
       });
+
       res.json(result);
     }
     else {
